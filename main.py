@@ -6,13 +6,13 @@ print("Я генератор Qr кодів.")
 print("Я був створений Bеличною генійкою та хакеркою Шеремет Євою.")
 print("До речі, вона дуже скромна :)")
 print("Виберіть будь ласка режим.")
-Manu = int(input("Меню:\n1 Qr code звичайного тексту \n2 Qr code WiFi \n3 Візитівка \n  "))
+Menu = int(input("Меню:\n1 Qr code звичайного тексту \n2 Qr code WiFi \n3 Візитівка \n  "))
 Qr = ''
-if Manu == 1:
+if Menu == 1:
     print("Введіть Будь який текст: ")
     Qr = str(input())
 
-elif Manu == 2:
+elif Menu == 2:
     print("Введіть назву WiFi: ")
     MySSID = str(input())
     print("Виберіть 1 якщо WEP чи 2 якщо WPA: ")
@@ -29,8 +29,31 @@ elif Manu == 2:
     a = "WIFI:S:%s;T:%s;P:%s;;"
     Qr = a % (MySSID, WPA, MyPassW0rd)
 
-elif Manu == 3:
-    print("Велична генійка зайнята. Приходьте пізніше.")
+elif Menu == 3:
+    print("Введіть ваше імя: ")
+    N = str(input())
+    print("Введіть ваше прізвище: ")
+    FN = str(input())
+    print("Введіть незву роботи: ")
+    ORG = str(input())
+    print("Введіть вашу посаду ")
+    TITLE = str(input())
+    print("Введіть ваш номер телефону: ")
+    TEL = int(input())
+    print("Введіть ваш EMAIL ")
+    EMAIL = str(input())
+
+    a = """BEGIN:VCARD
+VERSION:3.0
+N:%s;%s
+FN:%s %s
+ORG:%s
+TITLE:%s
+TEL:%s
+EMAIL:%s
+END:VCARD"""
+    Qr = a % (FN, N, N, FN, ORG, TITLE, TEL, EMAIL)
+
 
 else:
     exit
@@ -41,9 +64,6 @@ im = Image.open('Qr code .png')
 im = im.convert("RGBA")
 im.show()'''
 
-# import modules
-import qrcode
-from PIL import Image
 
 # taking image which user wants
 # in the QR code center
@@ -82,6 +102,6 @@ QRimg.paste(logo, pos)
 # save the QR code generated
 QRimg.save('qr code generator.png')
 
-print('QR code generated!')
+print(Qr)
 img = Image.open('qr code generator.png')
 img.show()
