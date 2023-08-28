@@ -20,7 +20,7 @@ elif Menu == 2:
     elif WPA == 2:
         WPA = "WPA"
     else:
-        exit
+        exit()
     print("Введіть пароль: ")
     MyPassW0rd = str(input())
 
@@ -54,7 +54,7 @@ END:VCARD"""
 
 
 else:
-    exit
+    exit()
 
 '''imeg = qrcode.make(Qr)
 imeg.save("Qr code .png")
